@@ -1,0 +1,9 @@
+body {
+    padding-top: 30px;
+}
+ 
+.form-signup, .form-signin {
+    width: 300px;
+    margin: 20 auto;
+}
+
