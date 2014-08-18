@@ -19,6 +19,7 @@
 </br>
 </br>
 </br>
+{{ Form::open(array('url' => '/usuario/cerrarTicket','class'=>'form-horizontal')) }}
 <table class="table table-striped">
   <tr>
     <td># TICKET</td>
@@ -38,9 +39,14 @@
       <td>{{$ticket->detalle}}</td>
       <td>{{$ticket->empresa}}</td>
       <td>{{$ticket->tipo_soporte}}</td>
-      <td>{{$ticket->prioridad}}</td>
+      <td>{{$ticket->prioridad}}</td>      
       <td>{{$ticket->estado}}</td>
+      <td>
+        <button type="submit" class="btn btn-danger">Peligro</button>
+      </td>
   </tr>
 @endforeach
 </table>
+
+{{ Form::close() }}
 @stop

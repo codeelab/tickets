@@ -9,6 +9,14 @@ class UsuarioController extends BaseController{
 	}
 
 
+	public function cerrarTicket(){
+		//$tickets = Tickets::all();
+        // obtenemos todos los tickets y los pasamos a la vista 
+        $tickets = DB::table('view_tickets')->where('usuario', Auth::user()->id)->get();
+        return Redirect::to('usuario');
+	}
+
+
 
 	public function mostrarNuevo(){
 		
