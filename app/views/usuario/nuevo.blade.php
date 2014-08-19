@@ -3,7 +3,7 @@
 
 </br>
 
-{{ Form::open(array('url' => '/usuario','class'=>'form-horizontal')) }}
+{{ Form::open(array('url' => '/usuario','class'=>'form-horizontal','enctype'=>'multipart/form-data')) }}
 
          <input type="hidden" name="tb_usuarios_id" value="<?php echo Auth::user()->id;?>">
          <input type="hidden" name="fecha_emision" value="<?php echo date("d/m/Y");?>">
@@ -33,10 +33,8 @@
               <option value="{{$linea->id_linea}}">{{$linea->nombre_linea}} </option>
             @endforeach
         </select>
-
   </div>
   </div>
-
   <div class="form-group">
   {{Form::label('tipo_soporte','Tipo de Soporte',array('class'=>'col-sm-2 from-control') )}}
     <div class="col-sm-10">
@@ -80,7 +78,7 @@
 
    <div class="form-group">    
     {{Form::label('Archivo','Archivo',array('class'=>'col-sm-2 from-control'))}}
-      <input type="file"></input>
+      {{ Form::file('archivo') }}
   </div>
 
   <div class="form-group">
@@ -91,7 +89,6 @@
   </div>
 <div class="form-group">
   {{Form::submit('Grabar',array('class'=>'btn btn-success'))}}
-  {{Form::submit('Limpiar',array('class'=>'btn btn-default'))}}
 </div>
 </br>
 {{ Form::close() }}

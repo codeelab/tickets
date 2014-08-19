@@ -19,7 +19,6 @@
 </br>
 </br>
 </br>
-{{ Form::open(array('url' => '/usuario/cerrarTicket','class'=>'form-horizontal')) }}
 <table class="table table-striped">
   <tr>
     <td># TICKET</td>
@@ -29,6 +28,7 @@
     <td>TIPO DE SOPORTE</td> 
     <td>PRIORIDAD</td> 
     <td>ESTADO</td>
+    <td>ARCHIVO ADJUNTO</td>
     <td></td>
   </tr>
 
@@ -41,12 +41,34 @@
       <td>{{$ticket->tipo_soporte}}</td>
       <td>{{$ticket->prioridad}}</td>      
       <td>{{$ticket->estado}}</td>
+      <td><?php
+          $directorio=opendir("./imagenes/".$ticket->id_ticket); //ruta actual
+                            while($archivo= readdir($directorio)){
+                                if(is_dir($archivo)){
+                                     if($archivo <> "." and $archivo <> ".." ){
+                                    echo "[".$archivo."]<br/>";
+                                    }
+                                }else{
+                                    if($archivo <> "." and $archivo <> ".." ){
+                                      echo ' <a href="./imagenes/'.$ticket->id_ticket.'/'.utf8_encode($archivo).'" TARGET="_blank">'.utf8_encode($archivo).'<br/></a>';
+                                    }                                    
+                                }
+                            }
+            ?>
+      </td>
       <td>
-        <button type="submit" class="btn btn-danger">Peligro</button>
+      <?php
+      if($ticket->estado == 'Cerrado'){
+        echo "OK";
+        }else{
+          ?>
+          <a class="btn btn-danger" href="{{URL::to('usuario/cerrarTicket?id='.$ticket->id_ticket)}} ">Cerrar</a>
+          <?php
+        }        
+          ?>
       </td>
   </tr>
 @endforeach
 </table>
 
-{{ Form::close() }}
 @stop

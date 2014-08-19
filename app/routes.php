@@ -104,7 +104,7 @@ Route::get('usuario', 'UsuarioController@mostrarTickets');
 Route::get('usuario/nuevo', 'UsuarioController@mostrarNuevo');
 Route::get('usuario/cambiarclave', 'UsuarioController@mostrarCambiarClave');
 Route::post('usuario', 'UsuarioController@crearTicket');
-Route::post('usuario/cerrarTicket', 'UsuarioController@cerrarTicket');
+Route::get('usuario/cerrarTicket', 'UsuarioController@cerrarTicket');
 
 Route::POST('usuario/jsoportedetalle', function(){
 
