@@ -49,7 +49,8 @@ class UsuarioController extends BaseController{
         $respuesta = Tickets::agregarNuevoTicket(Input::all());
         $max = DB::table('tb_tickets')
                      ->select(DB::raw('max(id_tickets) as id_tickets'))                  
-                     ->get();    
+                     ->get();
+
        foreach($max as $maxs):
        	mkdir("imagenes/".$maxs->id_tickets);
        		if(Input::hasFile('archivo')) {
@@ -60,11 +61,26 @@ class UsuarioController extends BaseController{
        	endforeach;
 
        	if(Input::hasFile('archivo')) {
-    	$file = Input::file('archivo'); 
-		$filename = $file->getClientOriginalName();		
-		Input::file('archivo')->move('imagenes/'.$maxs->id_tickets,$filename);
-    	}
+        	$file = Input::file('archivo'); 
+		      $filename = $file->getClientOriginalName();		
+		      Input::file('archivo')->move('imagenes/'.$maxs->id_tickets,$filename);
+    	   }
 
+          $data=array(
+            'ticket'=>'00011',
+            'usuario'=>'usuario_prueba');
+
+         Mail::send('tmRegistroTicket', $data, function($message)
+        {
+           $message->to('jorge.lopez@gruposiglo.net')->subject('Nuevo ticket');
+        });
+
+         Mail::send('tmRegistroTicket', $data, function($message)
+        {
+           $message->to('soportetiperu@gruposiglo.net')->subject('Nuevo ticket');
+        });
+
+         
         return Redirect::to('usuario');      
     }
 
