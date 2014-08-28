@@ -7,8 +7,8 @@
 </head>
 <body>
 	<div class="welcome">		
-		<h1>NUEVO TICKET CREADO</h1>
-		<h3>Se creo un nuevo ticket</h3>
+		<h1>TICKET CERRADO</h1>
+		<h3>Se Cerro el ticket #</h3>
 		<p>Numero de ticket: <?php echo $ticket ?></p>
 		<p>Usuario: <?php echo $usuario ?></p>
 		<p>---- Correo de prueba de sistema de tickets Grupos Siglo Peru ----</p>

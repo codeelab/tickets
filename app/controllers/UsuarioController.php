@@ -4,7 +4,9 @@ class UsuarioController extends BaseController{
 	public function mostrarTickets(){
 		//$tickets = Tickets::all();
         // obtenemos todos los tickets y los pasamos a la vista 
+
         $tickets = DB::table('view_tickets')->where('usuario', Auth::user()->id)->get();
+
         return View::make('usuario.usuario', array('tickets' => $tickets ));
 	}
 
@@ -16,7 +18,27 @@ class UsuarioController extends BaseController{
         DB::table('tb_tickets')
             ->where('id_tickets', $id)
             ->update(array('estado' => 'Cerrado'));
+
+        $data=array(
+            'ticket'=>'00011',
+            'usuario'=>'usuario_prueba');
+
+     /*    Mail::send('tmRegistroTicket', $data, function($message)
+        {
+           $message->to('jorge.lopez@gruposiglo.net')->subject('Nuevo ticket');
+        });
+
+         Mail::send('tmRegistroTicket', $data, function($message)
+        {
+           $message->to('soportetiperu@gruposiglo.net')->subject('Nuevo ticket');
+        });
+        */
+                 echo "<script language='JavaScript'> 
+                alert('Ticket Cerrado..!!');
+            </script>";
+
         return Redirect::to('usuario');
+
 	}
 
 
@@ -66,7 +88,7 @@ class UsuarioController extends BaseController{
 		      Input::file('archivo')->move('imagenes/'.$maxs->id_tickets,$filename);
     	   }
 
-          $data=array(
+     /*   $data=array(
             'ticket'=>'00011',
             'usuario'=>'usuario_prueba');
 
@@ -78,9 +100,12 @@ class UsuarioController extends BaseController{
          Mail::send('tmRegistroTicket', $data, function($message)
         {
            $message->to('soportetiperu@gruposiglo.net')->subject('Nuevo ticket');
-        });
+        }); */
 
-         
+         echo "<script language='JavaScript'> 
+                alert('Ticket Creado..!!,');
+              </script>";
+
         return Redirect::to('usuario');      
     }
 

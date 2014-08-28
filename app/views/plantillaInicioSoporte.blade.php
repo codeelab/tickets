@@ -30,5 +30,7 @@
 	<script type="https://code.jquery.com/jquery.js"></script>
 	<!--Incluimos el js de bootstrap con el Helper de laravel -->
 		{{HTML::script('js/bootstrap.min.js')}}
+	<!-- Core Scripts - Include with every page -->
+    <script src="../js/jquery-2.0.3.min.js"></script>
 </body>
 </html>
