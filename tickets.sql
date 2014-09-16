@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local host
-Source Server Version : 50611
+Source Server         : localhost_3306
+Source Server Version : 50620
 Source Host           : localhost:3306
 Source Database       : tickets
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2014-08-21 15:50:48
+Date: 2014-09-16 09:40:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -72,8 +72,8 @@ CREATE TABLE `tb_soporte` (
 -- ----------------------------
 -- Records of tb_soporte
 -- ----------------------------
-INSERT INTO `tb_soporte` VALUES ('1', 'Soporte_APP');
-INSERT INTO `tb_soporte` VALUES ('2', 'Soporte_TI');
+INSERT INTO `tb_soporte` VALUES ('1', 'Soporte sistemas');
+INSERT INTO `tb_soporte` VALUES ('2', 'Soporte_TI ');
 INSERT INTO `tb_soporte` VALUES ('3', 'Soporte_SAP');
 
 -- ----------------------------
@@ -143,14 +143,12 @@ CREATE TABLE `tb_tickets` (
   CONSTRAINT `fk_tb_tickets_tb_linea_negocio1` FOREIGN KEY (`tb_linea_negocio_id_linea`) REFERENCES `tb_linea_negocio` (`id_linea`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_tickets_tb_soporte_detalle1` FOREIGN KEY (`tb_soporte_detalle_id_soporte_detalle`, `tb_soporte_detalle_tb_soporte_id_soporte_ti`) REFERENCES `tb_soporte_detalle` (`id_soporte_detalle`, `tb_soporte_id_soporte_ti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_tickets_tb_usuarios1` FOREIGN KEY (`tb_usuarios_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_tickets
 -- ----------------------------
-INSERT INTO `tb_tickets` VALUES ('37', 'No funiona mi telefono', 'Buenos dias no funciona mi telefono, help me =)', 'media', 'Cerrado', '0000-00-00', null, null, 'Se soluciono, cambiando de cable', null, '3', '21', '12', '2', '15:41:22', '2014-06-25 10:43:34', '2014-06-25 10:43:34', '2', '20', 'alta', '', null, null);
-INSERT INTO `tb_tickets` VALUES ('38', 'soporte', 'no abre el sistema', 'alta', 'Cerrado', '0000-00-00', null, null, 'Esto es Esparta!!!!!!!', null, '1', '22', '18', '3', '15:54:59', '2014-06-25 10:59:44', '2014-06-25 10:59:44', '3', '20', 'baja', '', null, null);
-INSERT INTO `tb_tickets` VALUES ('39', 'fdsfds', 'fdsfdsfdsfdsfdsfdsf', 'media', 'Pendiente', '0000-00-00', null, null, null, null, '3', '22', '3', '1', '18:08:56', '2014-07-17 11:00:06', '2014-07-17 11:00:06', '4', '21', 'media', '', '2014-07-17 11:00:06', '2014-07-17 11:00:06');
+INSERT INTO `tb_tickets` VALUES ('37', 'No funiona mi telefono', 'Buenos dias no funciona mi telefono', 'media', 'Cerrado', '0000-00-00', null, null, 'Se soluciono, cambiando de cable', null, '3', '21', '12', '2', '15:41:22', '2014-09-04 15:47:52', '2014-09-04 15:47:52', '2', '20', 'alta', '', '2014-09-04 15:47:52', '2014-09-04 15:47:52');
 INSERT INTO `tb_tickets` VALUES ('41', 'problemas en el sistema', 'Error en el sistema', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '2', '10', '12', '2', '16:44:23', '2014-08-19 12:46:50', '2014-08-19 12:46:50', '3', null, null, '', '2014-08-19 12:46:50', '2014-08-19 12:46:50');
 INSERT INTO `tb_tickets` VALUES ('42', 'ffsdfdsf', 'dfsdfdsfdsfds', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '4', '10', '10', '2', '16:51:08', '2014-08-19 12:46:50', '2014-08-19 12:46:50', '2', null, null, '', '2014-08-19 12:46:50', '2014-08-19 12:46:50');
 INSERT INTO `tb_tickets` VALUES ('43', 'fedfsdfds', 'fsdfdsfsdf', 'media', 'Cerrado', '0000-00-00', null, '1', null, null, '1', '10', '10', '2', '17:25:35', '2014-08-19 12:46:49', '2014-08-19 12:46:49', '1', null, null, '', '2014-08-19 12:46:49', '2014-08-19 12:46:49');
@@ -171,6 +169,31 @@ INSERT INTO `tb_tickets` VALUES ('61', 'dfasdsa', 'dsadsad', 'media', 'Cerrado',
 INSERT INTO `tb_tickets` VALUES ('62', 'fdsfdsf', 'sfdfsdf', 'alta', 'Cerrado', '0000-00-00', null, null, null, null, '4', '10', '10', '2', '18:36:54', '2014-08-20 13:37:34', '2014-08-20 13:37:34', '3', null, null, '', '2014-08-20 13:37:34', '2014-08-20 13:37:34');
 INSERT INTO `tb_tickets` VALUES ('63', 'fdfdsf', 'sdfdsfd', 'baja', 'Cerrado', '0000-00-00', null, null, null, null, '1', '10', '1', '1', '18:39:50', '2014-08-20 13:42:00', '2014-08-20 13:42:00', '1', null, null, '', '2014-08-20 13:42:00', '2014-08-20 13:42:00');
 INSERT INTO `tb_tickets` VALUES ('64', 'dsadsa', 'sadsadsa', 'baja', 'Cerrado', '0000-00-00', null, null, null, null, '3', '10', '2', '1', '18:41:06', '2014-08-20 13:41:16', '2014-08-20 13:41:16', '3', null, null, '', '2014-08-20 13:41:16', '2014-08-20 13:41:16');
+INSERT INTO `tb_tickets` VALUES ('65', 'no funcionna', 'prueba de correo', 'alta', 'Cerrado', '0000-00-00', null, '1', null, null, '3', '10', '2', '1', '15:34:33', '2014-09-02 12:01:35', '2014-09-02 12:01:35', '3', null, null, '', '2014-09-02 12:01:35', '2014-09-02 12:01:35');
+INSERT INTO `tb_tickets` VALUES ('67', 'efrewfsd', 'fdsfdsfdsf', 'alta', 'Abierto', '0000-00-00', null, '1', null, null, '3', '10', '10', '2', '15:51:36', '2014-09-02 10:54:46', '2014-09-02 10:54:46', '2', null, null, '', '2014-09-02 10:54:46', '2014-09-02 10:54:46');
+INSERT INTO `tb_tickets` VALUES ('68', 'efrewfsd', 'fdsfdsfdsf', 'alta', 'Abierto', '0000-00-00', null, '1', null, null, '3', '10', '10', '2', '15:51:36', '2014-09-02 10:55:15', '2014-09-02 10:55:15', '2', null, null, '', '2014-09-02 10:55:15', '2014-09-02 10:55:15');
+INSERT INTO `tb_tickets` VALUES ('69', 'efrewfsd', 'fdsfdsfdsf', 'alta', 'Abierto', '0000-00-00', null, '1', null, null, '3', '10', '10', '2', '15:51:36', '2014-09-02 10:56:11', '2014-09-02 10:56:11', '2', null, null, '', '2014-09-02 10:56:11', '2014-09-02 10:56:11');
+INSERT INTO `tb_tickets` VALUES ('70', 'efdsfds', 'wqfdsfadfgag', 'media', 'Abierto', '0000-00-00', null, '1', null, null, '2', '10', '1', '1', '16:12:19', '2014-09-02 11:12:35', '2014-09-02 11:12:35', '3', null, null, '', '2014-09-02 11:12:35', '2014-09-02 11:12:35');
+INSERT INTO `tb_tickets` VALUES ('71', 'dsfdsfds', 'dsfsdfdsffdsfdsf', 'alta', 'Abierto', '0000-00-00', null, '1', null, null, '1', '10', '2', '1', '16:13:06', '2014-09-02 11:13:23', '2014-09-02 11:13:23', '1', null, null, '', '2014-09-02 11:13:23', '2014-09-02 11:13:23');
+INSERT INTO `tb_tickets` VALUES ('72', 'fdsfsd', 'dsfsdfdsf', 'baja', 'Abierto', '0000-00-00', null, null, null, null, '2', '10', '11', '2', '16:13:31', '2014-09-02 16:13:43', '2014-09-02 16:13:43', '3', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('73', 'dsfdsf', 'dsfdsfdsfds', 'baja', 'Abierto', '0000-00-00', null, null, null, null, '2', '10', '11', '2', '16:13:31', '2014-09-02 16:14:02', '2014-09-02 16:14:02', '3', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('74', 'gfdg', 'fdgdfgfdgf', 'alta', 'Abierto', '0000-00-00', null, '1', null, null, '3', '10', '10', '2', '16:21:09', '2014-09-02 11:21:28', '2014-09-02 11:21:28', '2', null, null, '', '2014-09-02 11:21:28', '2014-09-02 11:21:28');
+INSERT INTO `tb_tickets` VALUES ('75', '452542', '452452542', 'media', 'Abierto', '0000-00-00', null, null, null, null, '1', '10', '13', '2', '16:22:53', '2014-09-02 16:23:08', '2014-09-02 16:23:08', '2', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('76', '5254254', 'ytuytuytutyu', 'media', 'Abierto', '0000-00-00', null, '1', null, null, '4', '10', '12', '2', '16:23:13', '2014-09-02 11:23:39', '2014-09-02 11:23:39', '3', null, null, '', '2014-09-02 11:23:39', '2014-09-02 11:23:39');
+INSERT INTO `tb_tickets` VALUES ('77', 'gfdgfdg', 'dfgfdgfdgfd', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '2', '10', '2', '1', '16:31:18', '2014-09-02 15:27:11', '2014-09-02 15:27:11', '2', null, null, '', '2014-09-02 15:27:11', '2014-09-02 15:27:11');
+INSERT INTO `tb_tickets` VALUES ('78', 'gfhfgh', 'fghgfhg', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '1', '10', '2', '1', '16:31:40', '2014-09-02 15:34:35', '2014-09-02 15:34:35', '1', null, null, '', '2014-09-02 15:34:35', '2014-09-02 15:34:35');
+INSERT INTO `tb_tickets` VALUES ('79', 'gfgfdg', 'fdgfdgfdgdfg', 'media', 'Abierto', '0000-00-00', null, null, null, null, '3', '10', '2', '1', '16:34:03', '2014-09-02 16:34:13', '2014-09-02 16:34:13', '3', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('80', 'fdfg', 'sdfdsfdsfdsf', 'media', 'Abierto', '0000-00-00', null, null, null, null, '2', '10', '10', '2', '16:34:49', '2014-09-02 16:35:01', '2014-09-02 16:35:01', '3', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('81', 'fdfds', 'fsdfsdfds', 'alta', 'Cerrado', '0000-00-00', null, null, null, null, '3', '10', '2', '1', '16:40:06', '2014-09-02 15:34:00', '2014-09-02 15:34:00', '2', null, null, '', '2014-09-02 15:34:00', '2014-09-02 15:34:00');
+INSERT INTO `tb_tickets` VALUES ('82', 'yfrgdf', 'gfdgfdg', 'media', 'Abierto', '0000-00-00', null, null, null, null, '3', '10', '17', '3', '16:42:04', '2014-09-02 16:42:13', '2014-09-02 16:42:13', '2', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('83', 'dsarfdsf', 'dsfdsfds', 'alta', 'Abierto', '0000-00-00', null, null, null, null, '3', '10', '2', '1', '16:43:35', '2014-09-02 16:43:43', '2014-09-02 16:43:43', '2', null, null, '', null, null);
+INSERT INTO `tb_tickets` VALUES ('84', 'sdfasd', 'dsadsadsad', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '3', '10', '2', '1', '16:47:28', '2014-09-02 15:34:55', '2014-09-02 15:34:55', '2', null, null, '', '2014-09-02 15:34:55', '2014-09-02 15:34:55');
+INSERT INTO `tb_tickets` VALUES ('85', 'hgfdsgdsg', 'dfgdfgfdg', 'media', 'Pendiente', '0000-00-00', null, null, null, null, '3', '10', '18', '3', '16:47:54', '2014-09-04 15:41:40', '2014-09-04 15:41:40', '3', '21', 'media', '', '2014-09-04 15:41:40', '2014-09-04 15:41:40');
+INSERT INTO `tb_tickets` VALUES ('86', 'kjkhjk', 'jkjhkhjk', 'baja', 'Pendiente', '0000-00-00', null, null, null, null, '4', '10', '10', '2', '16:51:30', '2014-09-04 19:59:54', '2014-09-04 19:59:54', '3', '21', 'baja', '', '2014-09-04 19:59:54', '2014-09-04 19:59:54');
+INSERT INTO `tb_tickets` VALUES ('87', 'sdf', 'fdsfdsfds', 'baja', 'Cerrado', '0000-00-00', null, null, null, null, '3', '10', '11', '2', '16:53:16', '2014-09-02 15:16:20', '2014-09-02 15:16:20', '3', null, null, '', '2014-09-02 15:16:20', '2014-09-02 15:16:20');
+INSERT INTO `tb_tickets` VALUES ('88', 'fdsfdsfds', 'dfdsfds', 'alta', 'Cerrado', '0000-00-00', null, null, null, null, '3', '10', '10', '2', '16:54:10', '2014-09-02 12:01:38', '2014-09-02 12:01:38', '3', null, null, '', '2014-09-02 12:01:38', '2014-09-02 12:01:38');
+INSERT INTO `tb_tickets` VALUES ('89', 'no funcionna', 'Pruewba', 'baja', 'Cerrado', '0000-00-00', null, null, null, null, '2', '10', '5', '1', '16:55:36', '2014-09-02 12:01:37', '2014-09-02 12:01:37', '2', null, null, '', '2014-09-02 12:01:37', '2014-09-02 12:01:37');
+INSERT INTO `tb_tickets` VALUES ('90', 'no funciona', 'fdsfdsfsdfsdf', 'media', 'Cerrado', '0000-00-00', null, null, null, null, '4', '10', '5', '1', '16:57:43', '2014-09-02 12:01:36', '2014-09-02 12:01:36', '3', null, null, '', '2014-09-02 12:01:36', '2014-09-02 12:01:36');
 
 -- ----------------------------
 -- Table structure for tb_usuarios
@@ -188,15 +211,14 @@ CREATE TABLE `tb_usuarios` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `dni_UNIQUE` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_usuarios
 -- ----------------------------
-INSERT INTO `tb_usuarios` VALUES ('10', '46401994', 'jorge', 'Lopez Rojas', 'jorge.lopez@gruposiglo.net', '$2y$10$xdw.xYFeCV.I2oIJSWqr1uywTzcmM7j/MjY85vu.8Oeq0qVGIz/ha', 'U', '2014-04-20 06:27:12', '2014-04-20 06:27:12');
+INSERT INTO `tb_usuarios` VALUES ('10', '46401994', 'jorge', 'Lopez Rojas', 'jorge.lopez@gruposiglo.net', '$2y$10$xdw.xYFeCV.I2oIJSWqr1uywTzcmM7j/MjY85vu.8Oeq0qVGIz/ha', 'A', '2014-04-20 06:27:12', '2014-04-20 06:27:12');
 INSERT INTO `tb_usuarios` VALUES ('20', '44672524', 'suzy', 'Gonzalez Perez', 'suzy.gonzalez@gruposiglo.net', '$2y$10$iT6mDWKn7Y2tQdgiHPPt8eXir03O2bD8Jxuc1cj.nV0z6DD9TJolS', 'S', '2014-06-25 15:35:27', '2014-06-25 15:35:27');
 INSERT INTO `tb_usuarios` VALUES ('21', '41596094', 'olga', 'Espinoza Campos', 'olga.espinoza@gruposiglo.net', '$2y$10$oqChx3BHUCifKbeKIzSF6ezpxn1j6WooN7VVuRA.KwjearYx14hWW', 'S', '2014-06-25 15:40:57', '2014-06-25 15:40:57');
-INSERT INTO `tb_usuarios` VALUES ('22', '46098087', 'Karina', 'Luna nuñez', 'irma.luna@gruposiglo.net', '$2y$10$H/zmk5n/RU/44B/ICGzgEu6qgH5EjMsgYS.rME8KFlq/gF1g1c0ja', 'U', '2014-06-25 15:47:01', '2014-06-25 15:47:01');
 
 -- ----------------------------
 -- Table structure for tb_usuario_empresa
@@ -261,7 +283,8 @@ inner join tb_soporte c on a.tb_soporte_detalle_tb_soporte_id_soporte_ti=c.id_so
 -- View structure for view_ticketsadministrador
 -- ----------------------------
 DROP VIEW IF EXISTS `view_ticketsadministrador`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_ticketsadministrador` AS select a.id_tickets as id_ticket,CONCAT(e.apellidos,', ',e.nombres) as usuario , a.asunto as asunto, a.detalle as detalle, b.nombre_empresa as empresa ,c.tipo_soporte as tipo_soporte,a.prioridad as prioridad, a.estado as estado, CONCAT(f.apellidos,', ',f.nombres) as usuario_soporte
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_ticketsadministrador` AS select a.id_tickets as id_ticket,CONCAT(e.apellidos,', ',e.nombres) as usuario , a.asunto as asunto, a.detalle as detalle, b.nombre_empresa as empresa ,c.tipo_soporte as tipo_soporte,a.prioridad as prioridad, a.estado as estado, CONCAT(f.apellidos,', ',f.nombres) as usuario_soporte,
+a.hora_inicio as hora_inicio
 from tb_tickets a 
 inner join tb_empresa b on a.tb_empresa_id=b.id_empresa
 inner join tb_soporte c on a.tb_soporte_detalle_tb_soporte_id_soporte_ti=c.id_soporte

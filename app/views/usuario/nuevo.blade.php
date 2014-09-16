@@ -93,7 +93,6 @@
 </br>
 {{ Form::close() }}
 
-<script src="../js/jquery-2.0.3.min.js"></script>
     
     <script "type/javascript">
     jQuery(document).ready(function() {
@@ -109,20 +108,19 @@
                 dataType: "json",
                 success: function(tb_detalle){
                     $('select#tb_soporte_detalle_id_soporte_detalle').html('');
-                    $('select#tb_soporte_detalle_id_soporte_detalle').append($('<option value="00"></option>').text('Seleccionar').val('')); 
-                    //recorremos con el metodo each el objeto
-                    $.each(tb_detalle, function(i) {
-                        //Con los parametros que recibimos en nuestro objeto estado creamos las opciones
-                        $('select#tb_soporte_detalle_id_soporte_detalle').append("<option value=\""+tb_detalle[i].id_soporte_detalle+"\">"+tb_detalle[i].detalle_soporte+"<\/option>");
-                        // estado[i].id = Contiene el id del estado
-                        // estado[i].estados = Contiene el nombre del estado
-                    });
-                }
-            })            
-        });
-
-});
+                      $('select#tb_soporte_detalle_id_soporte_detalle').append($('<option value="00"></option>').text('Seleccionar').val('')); 
+                      //recorremos con el metodo each el objeto
+                      $.each(tb_detalle, function(i) {
+                          //Con los parametros que recibimos en nuestro objeto estado creamos las opciones
+                          $('select#tb_soporte_detalle_id_soporte_detalle').append("<option value=\""+tb_detalle[i].id_soporte_detalle+"\">"+tb_detalle[i].detalle_soporte+"<\/option>");
+                          // estado[i].id = Contiene el id del estado
+                          // estado[i].estados = Contiene el nombre del estado
+                      });
+                  }
+              })            
+          });
+    });
   
-    </script>
+</script>
 
 @stop

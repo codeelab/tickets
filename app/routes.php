@@ -114,4 +114,17 @@ Route::POST('usuario/jsoportedetalle', function(){
   }
 });
 
+Route::POST('administrador/jsticketabierto',function(){
+if(Request::ajax()){
+            $filtro = e(Input::get('filtro'));
+        return Redirect::to('http://localhost/bfExplorer-0.0.9.1/files/index.php');
+        }
+});
+
+
+
+/*
+Route::POST('administrador/jsticketabierto','AdministradorController@jsticketabierto');
+http://localhost/bfExplorer-0.0.9.1/files/index.php
+*/
 

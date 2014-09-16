@@ -6,7 +6,6 @@
 	<!--Icluimos el CSS de bootstrap y el CSS de la plantilla
 	que usamos con los helpers de laravel-->
 	{{HTML::style('css/bootstrap.min.css')}}
-	{{HTML::style('css/jumbotron-narrow.css')}}
 	{{HTML::style('css/main.css')}}
 <script src="js/jquery-1.10.2.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>

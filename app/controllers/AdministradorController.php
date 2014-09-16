@@ -59,4 +59,227 @@ class AdministradorController extends BaseController{
     }
 
 
+    public function jsticketabierto() {
+    	if(Request::ajax()){
+     		$filtro = e(Input::get('filtro'));
+     		
+     		switch ($filtro) {
+    			case 1:
+    				$tickets = DB::table('view_ticketsAdministrador')->get();
+    			    $html='<table class="table table-bordered table-hover table-striped tablesorter">
+ 								<tr class="header headerSortUp ">
+ 								  <td># TICKET</td>
+ 								  <td>USUARIO</td>
+ 								  <td>ASUNTO</td>
+ 								  <td>DETALLE</td> 
+ 								  <td>EMPRESA</td> 
+ 								  <td>TIPO DE SOPORTE</td> 
+ 								  <td>PRIORIDAD</td> 
+ 								  <td>ESTADO</td>
+ 								  <td>SOPORTE TI</td>
+ 								  <td>DIA - HORA DE CREACION</td>
+ 								  <td>ARCHIVO ADJUNTO</td>
+ 								  <td></td>
+ 								</tr>';
+    					foreach ($tickets as $ticket ) {
+    						$html=$html.'<tr>
+    								<td>'.$ticket->id_ticket.'</td>
+    								<td>'.$ticket->usuario.'</td>
+    								<td>'.$ticket->asunto.'</td>
+    								<td>'.$ticket->detalle.'</td>
+    								<td>'.$ticket->empresa.'</td>
+    								<td>'.$ticket->tipo_soporte.'</td>
+    								<td>'.$ticket->prioridad.'</td>
+    								<td>'.$ticket->estado.'</td>
+    								<td>'.$ticket->usuario_soporte.'</td>
+    								<td>'.$ticket->hora_inicio.'</td>
+    								<td>
+    								';
+
+									$directorio=opendir("./imagenes/".$ticket->id_ticket); //ruta actual
+                            			while($archivo= readdir($directorio)){
+                            		 	   if(is_dir($archivo)){
+                            		 	        if($archivo <> "." and $archivo <> ".." ){                             	
+                            		 	       }
+                            		 	   }else{
+                            		 	       if($archivo <> "." and $archivo <> ".." ){
+                            		 	        $html=$html.'<a href="./imagenes/'.$ticket->id_ticket.'/'.utf8_encode($archivo).'" TARGET="_blank">'.utf8_encode($archivo).'<br/></a>';
+                            		 	       }                                    
+                            		  	  }
+                            		}
+                            		$html=$html.'</td>
+                            		<td>';
+										if($ticket->estado=='Abierto'){ 
+										     $html=$html.'<a class="btn btn-success" href="administrador/asignarsoporte?id='.$ticket->id_ticket.'" >Asignar Sorporte</a>';
+										  }if($ticket->estado=='Pendiente'){ 
+										        $html=$html.'<a class="btn btn-small btn-info" href="administrador/asignarsoporte?id='.$ticket->id_ticket.'">Modificar</a>';
+										    }
+									$html=$html.'</td>
+												</tr>';
+    						}
+    					$html=$html.'</table>';
+    			    break;
+    			case 2:
+    				$tickets_abiertos = DB::table('view_ticketsAdministrador')->where('estado', 'Abierto')->get();
+    				$html='<table class="table table-bordered table-hover table-striped tablesorter">
+ 								<tr class="header headerSortUp ">
+ 								  <td># TICKET</td>
+ 								  <td>USUARIO</td>
+ 								  <td>ASUNTO</td>
+ 								  <td>DETALLE</td> 
+ 								  <td>EMPRESA</td> 
+ 								  <td>TIPO DE SOPORTE</td> 
+ 								  <td>PRIORIDAD</td> 
+ 								  <td>ESTADO</td>
+ 								  <td>SOPORTE TI</td>
+ 								  <td>DIA - HORA DE CREACION</td>
+ 								  <td>ARCHIVO ADJUNTO</td>
+ 								  <td></td>
+ 								</tr>
+ 							<FORM action="http://algunsitio.com/prog/usuarionuevo" method="post">';
+    					foreach ($tickets_abiertos as $ticket ) {
+    						$html=$html.'<tr>
+    								<td>'.$ticket->id_ticket.'</td>
+    								<td>'.$ticket->usuario.'</td>
+    								<td>'.$ticket->asunto.'</td>
+    								<td>'.$ticket->detalle.'</td>
+    								<td>'.$ticket->empresa.'</td>
+    								<td>'.$ticket->tipo_soporte.'</td>
+    								<td>'.$ticket->prioridad.'</td>
+    								<td>'.$ticket->estado.'</td>
+    								<td>'.$ticket->usuario_soporte.'</td>
+    								<td>'.$ticket->hora_inicio.'</td>
+    								<td>
+    								';
+
+									$directorio=opendir("./imagenes/".$ticket->id_ticket); //ruta actual
+                            			while($archivo= readdir($directorio)){
+                            		 	   if(is_dir($archivo)){
+                            		 	        if($archivo <> "." and $archivo <> ".." ){                             	
+                            		 	       }
+                            		 	   }else{
+                            		 	       if($archivo <> "." and $archivo <> ".." ){
+                            		 	        $html=$html.'<a href="./imagenes/'.$ticket->id_ticket.'/'.utf8_encode($archivo).'" TARGET="_blank">'.utf8_encode($archivo).'<br/></a>';
+                            		 	       }                                    
+                            		  	  }
+                            		}
+                            		$html=$html.'</td>
+                            		<td>
+                            		 <a class="btn btn-success" href="administrador/asignarsoporte?id='.$ticket->id_ticket.'" >Asignar Sorporte</a>
+                            		</td>
+    								</tr>';
+    						}
+    					$html=$html.
+    					' </table>
+						</FORM>';
+    			    break;
+    			case 3:
+    			    $tickets_abiertos = DB::table('view_ticketsAdministrador')->where('estado', 'Pendiente')->get();
+    				$html='<table class="table table-bordered table-hover table-striped tablesorter">
+ 								<tr class="header headerSortUp ">
+ 								  <td># TICKET</td>
+ 								  <td>USUARIO</td>
+ 								  <td>ASUNTO</td>
+ 								  <td>DETALLE</td> 
+ 								  <td>EMPRESA</td> 
+ 								  <td>TIPO DE SOPORTE</td> 
+ 								  <td>PRIORIDAD</td> 
+ 								  <td>ESTADO</td>
+ 								  <td>SOPORTE TI</td>
+ 								  <td>DIA - HORA DE CREACION</td>
+ 								  <td>ARCHIVO ADJUNTO</td>
+ 								  <td></td>
+ 								</tr>';
+    					foreach ($tickets_abiertos as $ticket ) {
+    						$html=$html.'<tr>
+    								<td>'.$ticket->id_ticket.'</td>
+    								<td>'.$ticket->usuario.'</td>
+    								<td>'.$ticket->asunto.'</td>
+    								<td>'.$ticket->detalle.'</td>
+    								<td>'.$ticket->empresa.'</td>
+    								<td>'.$ticket->tipo_soporte.'</td>
+    								<td>'.$ticket->prioridad.'</td>
+    								<td>'.$ticket->estado.'</td>
+    								<td>'.$ticket->usuario_soporte.'</td>
+    								<td>'.$ticket->hora_inicio.'</td>
+    								<td>
+    								';
+									$directorio=opendir("./imagenes/".$ticket->id_ticket); //ruta actual
+                            			while($archivo= readdir($directorio)){
+                            		 	   if(is_dir($archivo)){
+                            		 	        if($archivo <> "." and $archivo <> ".." ){                             	
+                            		 	       }
+                            		 	   }else{
+                            		 	       if($archivo <> "." and $archivo <> ".." ){
+                            		 	        $html=$html.'<a href="./imagenes/'.$ticket->id_ticket.'/'.utf8_encode($archivo).'" TARGET="_blank">'.utf8_encode($archivo).'<br/></a>';
+                            		 	       }                                    
+                            		  	  }
+                            		}
+                            		$html=$html.'</td>
+                            		<td>
+                            		 <a class="btn btn-small btn-info" href="administrador/asignarsoporte?id='.$ticket->id_ticket.'">Modificar</a>
+                            		</td>
+    								</tr>';
+    						}
+    					$html=$html.
+    					' </table>
+						';
+    			    break;
+    			case 4:
+    			    $tickets_abiertos = DB::table('view_ticketsAdministrador')->where('estado', 'Pendiente')->get();
+    				$html='<table class="table table-bordered table-hover table-striped tablesorter">
+ 								<tr class="header headerSortUp ">
+ 								  <td># TICKET</td>
+ 								  <td>USUARIO</td>
+ 								  <td>ASUNTO</td>
+ 								  <td>DETALLE</td> 
+ 								  <td>EMPRESA</td> 
+ 								  <td>TIPO DE SOPORTE</td> 
+ 								  <td>PRIORIDAD</td> 
+ 								  <td>ESTADO</td>
+ 								  <td>SOPORTE TI</td>
+ 								  <td>DIA - HORA DE CREACION</td>
+ 								  <td>ARCHIVO ADJUNTO</td>
+ 								  <td></td>
+ 								</tr>
+ 							<FORM action="http://algunsitio.com/prog/usuarionuevo" method="post">';
+    					foreach ($tickets_abiertos as $ticket ) {
+    						$html=$html.'<tr>
+    								<td>'.$ticket->id_ticket.'</td>
+    								<td>'.$ticket->usuario.'</td>
+    								<td>'.$ticket->asunto.'</td>
+    								<td>'.$ticket->detalle.'</td>
+    								<td>'.$ticket->empresa.'</td>
+    								<td>'.$ticket->tipo_soporte.'</td>
+    								<td>'.$ticket->prioridad.'</td>
+    								<td>'.$ticket->estado.'</td>
+    								<td>'.$ticket->usuario_soporte.'</td>
+    								<td>'.$ticket->hora_inicio.'</td>
+    								<td>
+    								';
+									$directorio=opendir("./imagenes/".$ticket->id_ticket); //ruta actual
+                            			while($archivo= readdir($directorio)){
+                            		 	   if(is_dir($archivo)){
+                            		 	        if($archivo <> "." and $archivo <> ".." ){                             	
+                            		 	       }
+                            		 	   }else{
+                            		 	       if($archivo <> "." and $archivo <> ".." ){
+                            		 	        $html=$html.'<a href="./imagenes/'.$ticket->id_ticket.'/'.utf8_encode($archivo).'" TARGET="_blank">'.utf8_encode($archivo).'<br/></a>';
+                            		 	       }                                    
+                            		  	  }
+                            		}
+                            		$html=$html.'</td>
+                            		<td>                            		 
+                            		</td>
+    								</tr>';
+    						}
+    					$html=$html.
+    					' </table>
+						</FORM>';
+    			    break;
+			}
+     		return $html;
+    	}
+    }
+
 }
